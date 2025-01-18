@@ -1,11 +1,16 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
 // Page Imports
 import HomePage from "./src/pages/HomePage";
 import LoginSignupPage from "./src/pages/LoginSignup";
 import { AboutPage, ContactPage, FAQPage } from "./src/pages/ACF";
-
+import { FullLayout } from "./src/layout";
 
 // 404 Page Component
 const NotFound = () => (
@@ -13,7 +18,10 @@ const NotFound = () => (
     <div className="text-center">
       <h1 className="text-4xl font-bold text-gray-900">404</h1>
       <p className="text-gray-600 mt-2">Page not found</p>
-      <a href="/" className="text-indigo-600 hover:text-indigo-500 mt-4 inline-block">
+      <a
+        href="/"
+        className="text-indigo-600 hover:text-indigo-500 mt-4 inline-block"
+      >
         Go back home
       </a>
     </div>
@@ -23,24 +31,23 @@ const NotFound = () => (
 const AppRouter = () => (
   <Router>
     <Routes>
-      {/* Public Routes */}
-      <Route path="/" element={<HomePage />} />
-      
-      {/* Authentication Routes */}
-      <Route path="/login-signup" element={<LoginSignupPage />} />
-      <Route path="/login" element={<LoginSignupPage />} />
-      <Route path="/signup" element={<LoginSignupPage />} />
-      
-      {/* Information Pages */}
-      <Route path="/about" element={<AboutPage />} />
-      <Route path="/contact" element={<ContactPage />} />
-      <Route path="/faq" element={<FAQPage />} />
-      
-      {/* Redirect /auth to /login */}
-      <Route path="/auth" element={<Navigate to="/login" replace />} />
-      
-      {/* 404 Page */}
-      <Route path="*" element={<NotFound />} />
+      <Route element={<FullLayout />}>
+        {/* Public Routes */}
+        <Route path="/" element={<HomePage />} />
+
+        {/* Authentication Routes */}
+        <Route path="/login-signup" element={<LoginSignupPage />} />
+        <Route path="/login" element={<LoginSignupPage />} />
+        <Route path="/signup" element={<LoginSignupPage />} />
+
+        {/* Information Pages */}
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/faq" element={<FAQPage />} />
+
+        {/* 404 Page */}
+        <Route path="*" element={<NotFound />} />
+      </Route>
     </Routes>
   </Router>
 );

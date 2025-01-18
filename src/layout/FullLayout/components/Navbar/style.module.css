@@ -19,7 +19,7 @@
 }
 
 .navbar.hidden {
-  transform: translateY(-100%);
+  transform: translateY(0);
 }
 
 .navbar-content {

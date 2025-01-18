@@ -1,8 +1,6 @@
 import { useRef } from "react";
-import { useSearchParams } from "react-router-dom";
 
 export default function LoginPage() {
-  const [searchParams] = useSearchParams();
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
 
@@ -96,10 +94,7 @@ export default function LoginPage() {
 
         <div className="mt-6 text-center text-sm text-gray-500">
           Don't have an account?{" "}
-          <a
-            href="/signup"
-            className="text-blue-600 hover:underline"
-          >
+          <a href="/signup" className="text-blue-600 hover:underline">
             Sign up
           </a>
         </div>
